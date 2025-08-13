@@ -1,0 +1,487 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Sembunyikan scrollbar di WebKit browsers (Chrome, Safari) */
+}
+
+.container-fluid {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Animasi Toggle */
+.wilayah-container {
+    display: none;
+    padding-left: 10px;
+    transition: all 0.3s ease-in-out;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.card-title {
+    font-size: 14px;
+}
+
+.wilayah-name {
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.iframe-container {
+    position: relative;
+    padding-bottom: 57%;
+    height: 0;
+    overflow: hidden;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-play {
+    fill: #fff;
+}
+
+.card0 {
+    padding: 10px;
+    background-color: rgb(152, 177, 124);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.card2 {
+    padding: 10px;
+    background-color: rgb(152, 177, 124);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    max-height: 80px;
+}
+
+.card02 {
+    padding: 10px;
+    background-color: rgb(152, 177, 124);
+    color: white;
+    text-align: center;
+    position: fixed;
+    z-index: 10;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card02 h1 {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.card0 h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.custom-inline {
+    display: inline-block;
+}
+
+.custom-inline input {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.custom-inline label {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Sidebar stylings */
+.side-bar {
+    background: rgb(55, 55, 55);
+    width: 50vh;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 0.4s ease-in-out;
+    transform: translateX(-100%);
+    overflow-y: auto;
+    padding-top: 20px;
+    margin: 0;
+    z-index: 1002;
+}
+
+.side-bar.active {
+    transform: translateX(0%);
+}
+
+.side-bar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.side-bar::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+/* Dropdown stylings */
+.menu {
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.item {
+    margin: 5px 0;
+}
+
+.menu .item a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: left;
+    padding: 10px 20px;
+    background: rgb(13, 124, 102);
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.menu .item a:hover {
+    background: rgb(11, 105, 86);
+}
+
+.sub-menu .item a {
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: left;
+    padding: 10px 20px;
+    background: rgb(21, 179, 146);
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.sub-menu .item a:hover {
+    background: rgb(17, 153, 124);
+}
+
+/* form Stylings */
+.form-check :hover {
+    background: rgb(117, 181, 94);
+    margin: 10px;
+}
+
+.form-check {
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: left;
+    padding: 10px 20px;
+    background: rgb(136, 214, 108);
+    border-radius: 5px;
+    transition: 0.3s ease;
+    margin: 5px 0px 10px 0px;
+    color: black;
+}
+
+.form-check:hover {
+    background: rgb(105, 165, 83);
+    color: white;
+}
+
+.menu .item i {
+    margin-right: 15px;
+}
+
+.sub-btn {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.sub-menu {
+    color: white;
+    display: none;
+    padding-left: 20px;
+}
+
+.sub-menu.show {
+    color: white;
+    display: block;
+}
+
+.dropdown {
+    transition: transform 0.3s;
+}
+
+.dropdown.rotate {
+    transform: rotate(90deg);
+}
+
+/* Tombol untuk membuka sidebar */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: black;
+    z-index: 100;
+}
+
+/* Hide sidebar on mobile by default */
+@media (max-width: 767.98px) {
+    .side-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #333;
+        /* Warna latar belakang sidebar */
+        z-index: 1000;
+        transform: translateX(-100%);
+        /* Menyembunyikan sidebar dari kiri */
+    }
+
+    .side-bar.active {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 767px) {
+
+    .card0,
+    .btn-sidebar {
+        display: none !important;
+    }
+
+    .card02,
+    .btn-mobile {
+        display: flex !important;
+    }
+}
+
+/* Untuk tampilan desktop (min 768px) */
+@media (min-width: 768px) {
+
+    .card02,
+    .btn-mobile {
+        display: none !important;
+    }
+
+    .card0,
+    .btn-sidebar {
+        display: block !important;
+    }
+}
+
+/* Styling untuk tombol sidebar */
+.btn-sidebar {
+    position: fixed;
+    top: 10px;
+    margin-left: 5px;
+    z-index: 1001;
+    background-color: rgb(152, 177, 124);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 28px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-mobile {
+    z-index: 1001;
+    background-color: rgb(152, 177, 124);
+    margin-top: 4px;
+    color: white;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    left: -100;
+}
+
+.btn-sidebar:hover {
+    color: #343a40;
+}
+
+.btn-sidebar2 {
+    position: fixed;
+    top: 10px;
+    margin-left: 5px;
+    z-index: 1001;
+    background-color: rgb(61, 141, 122);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-sidebar2:hover {
+    background-color: rgb(179, 216, 168);
+}
+
+.btn-dropdown {
+    position: fixed;
+    top: 10px;
+    height: 35px;
+    z-index: 1001;
+    background-color: rgb(61, 141, 122);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-dropdown:hover {
+    background-color: rgb(179, 216, 168);
+    color: #343a40;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.background-image {
+    position: absolute;
+    /* Menghilangkan elemen dari flow dokumen */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    /* Pastikan gambar berada di belakang konten lain */
+}
+
+.background-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 110%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    transform: rotate(180deg);
+}
+
+/* icon CheckboX */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+input[type="checkbox"]::before {
+    content: "\2713";
+    /* Unicode centang */
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+input[type="checkbox"]:checked::before {
+    display: block;
+}
+
+.form-check-input {
+    appearance: none;
+    background-color: red;
+}
+
+.side-bar.active .btn-sidebar {
+    position: absolute;
+    left: -999px;
+    /* Geser keluar layar */
+}
+
+.sidebar-active #btn-sidebar {
+    display: none;
+}
+
+.icon-toggle {
+    transition: transform 0.2s ease-in-out;
+}
+
+.icon-toggle:hover {
+    transform: scale(1.1);
+    /* Efek hover kecil */
+}
+
+.side-bar.active+.btn-sidebar {
+    display: none !important;
+}
